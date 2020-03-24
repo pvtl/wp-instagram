@@ -5,10 +5,13 @@ A WordPress plugin that allows you to connect to the [Instagram Basic Display AP
 
 ## Installation (Bedrock)
 
-1. Get it ready (to use a repo outside of packagist)**
-`composer config repositories.wp-instagram git https://bitbucket.org/pvtl/wp-instagram`
-2. Install the Plugin**
-`composer require pvtl/wp-instagram`
+```bash
+# 1. Get it ready (to use a repo outside of packagist)
+composer config repositories.wp-instagram git https://bitbucket.org/pvtl/wp-instagram
+
+# 2. Install the Plugin
+composer require pvtl/wp-instagram
+```
 
 ## Before You Start
 
