@@ -1,0 +1,17 @@
+{
+  "name": "pvtl/wp-instagram",
+  "description": "Sync Instagram media with WordPress.",
+  "homepage": "https://bitbucket.org/pvtl/wp-instagram",
+  "license": "GPL3",
+  "authors": [
+    {
+      "name": "Pivotal Agency",
+      "email": "hello@pivotalagency.com.au",
+      "homepage": "https://www.pivotalagency.com.au/"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.6"
+  }
+}
