@@ -244,7 +244,7 @@ final class WPInstagram {
 
         $params = array(
             'access_token' => $access_token,
-            'fields'       => 'id,media_type,media_url,permalink,caption',
+            'fields'       => 'id,media_type,media_url,permalink,caption,timestamp',
         );
 
         $response = wp_remote_get( "https://graph.instagram.com/{$user_id}/media?" . http_build_query( $params ) );
@@ -257,19 +257,23 @@ final class WPInstagram {
         if ( ! empty( $json->data ) ) {
             foreach ( $json->data as $media ) {
                 $args = array(
-                    'post_type'    => 'instagram',
-                    'post_status'  => 'publish',
-                    'post_title'   => $media->id,
-                    'post_content' => isset( $media->caption ) ? $media->caption : '',
+                    'post_type'     => 'instagram',
+                    'post_status'   => 'publish',
+                    'post_title'    => $media->id,
+                    'post_date'     => $media->timestamp,
+                    'post_modified' => $media->timestamp,
+                    'post_content'  => isset( $media->caption ) ? $media->caption : '',
                 );
 
                 $existing = get_page_by_title( $media->id, OBJECT, 'instagram' );
 
                 if ( $existing ) {
-                    continue;
-                }
+                    $args['ID'] = $existing->ID;
 
-                $post_id = wp_insert_post( $args );
+                    $post_id = wp_update_post( $args );
+                } else {
+                    $post_id = wp_insert_post( $args );
+                }
 
                 if ( is_wp_error( $post_id ) ) {
                     continue;
@@ -277,6 +281,10 @@ final class WPInstagram {
 
                 update_post_meta( $post_id, 'ig_media_url', $media->media_url );
                 update_post_meta( $post_id, 'ig_permalink', $media->permalink );
+
+                if ( has_post_thumbnail( $post_id ) ) {
+                    continue;
+                }
 
                 $wp_upload_dir = wp_upload_dir( null, true );
                 $file_name     = 'instagram-' . $media->id . '.jpg';
@@ -328,6 +336,8 @@ final class WPInstagram {
                 'post_type'      => 'instagram',
                 'post_status'    => 'publish',
                 'posts_per_page' => $items,
+                'orderby'        => 'post_date',
+                'order'          => 'DESC',
             )
         );
     }
