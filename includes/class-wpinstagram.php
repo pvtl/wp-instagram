@@ -18,7 +18,7 @@ final class WPInstagram {
      *
      * @var string
      */
-    public $version = '1.0.0';
+    public $version = '1.0.3';
 
     /**
      * The single instance of the class.
@@ -161,13 +161,16 @@ final class WPInstagram {
         register_post_type(
             'instagram',
             array(
-                'labels'      => array(
+                'labels'              => array(
                     'name'          => __( 'Instagram', 'wp-instagram' ),
                     'singular_name' => __( 'Instagram', 'wp-instagram' ),
                 ),
-                'public'      => true,
-                'has_archive' => false,
-                'supports'    => array(
+                'public'              => true,
+                'exclude_from_search' => true,
+                'publicly_queryable'  => false,
+                'show_in_nav_menus'   => false,
+                'has_archive'         => false,
+                'supports'            => array(
                     'title',
                     'editor',
                     'thumbnail',
