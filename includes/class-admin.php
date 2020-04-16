@@ -51,19 +51,6 @@ class Admin {
             printf( '<div class="notice notice-success"><p>%s</p></div>', 'Instagram account connected successfully.' );
         }
 
-        // $token_expires_at = get_option( 'instagram_expires_at' );
-
-        // if ( $token_expires_at ) {
-            // $expires_at = \DateTime::createFromFormat( 'U', $token_expires_at, new \DateTimeZone( 'UTC' ) );
-
-            // phpcs:disable WordPress.Security.EscapeOutput
-            // printf(
-            //     '<div class="notice notice-info"><p>%s %s</p></div>',
-            //     'Access token expires on the',
-            //     $expires_at->setTimezone( wp_timezone() )->format( 'jS F \a\t h:i a.' )
-            // );
-        // }
-
         if ( isset( $_SERVER['REQUEST_METHOD'] ) && 'POST' === $_SERVER['REQUEST_METHOD'] ) {
             $nonce = isset( $_POST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) : null;
 
