@@ -7,7 +7,7 @@ A WordPress plugin that allows you to connect to the [Instagram Basic Display AP
 
 ```bash
 # 1. Get it ready (to use a repo outside of packagist)
-composer config repositories.wp-instagram git https://bitbucket.org/pvtl/wp-instagram
+composer config repositories.wp-instagram git https://github.com/pvtl/wp-instagram
 
 # 2. Install the Plugin
 composer require pvtl/wp-instagram
@@ -68,7 +68,7 @@ Your Instagram account is now eligible to be accessed by your Facebook app while
 
 From within the Facebook App, navigate to **Products** > **Instagram** > **Basic Display**. Copy the **Instagram App ID** and **Instagram App Secret**.
 
-From within WordPress, navigate to navigate to **Instagram** > **Login**. Enter the **Instagram App ID** and **Instagram App Secret** values into the **Client ID** and **Client Secret** fields and click **Save Changes**.  
+From within WordPress, navigate to navigate to **Instagram** > **Login**. Enter the **Instagram App ID** and **Instagram App Secret** values into the **Client ID** and **Client Secret** fields and click **Save Changes**.
 
 Click the **Login to Instagram** button and allow WordPress to access the Instagram account.
 

@@ -1,7 +1,7 @@
 {
   "name": "pvtl/wp-instagram",
   "description": "Sync Instagram media with WordPress.",
-  "homepage": "https://bitbucket.org/pvtl/wp-instagram",
+  "homepage": "https://github.com/pvtl/wp-instagram",
   "license": "GPL3",
   "authors": [
     {
