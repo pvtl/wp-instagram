@@ -10,7 +10,7 @@
  * Plugin Name:       WP Instagram
  * Plugin URI:        https://www.pivotalagency.com.au
  * Description:       Sync Instagram media with WordPress.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Requires at least: 4.8
  * Requires PHP:      5.6
  * Author:            Pivotal Agency
