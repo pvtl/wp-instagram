@@ -18,7 +18,7 @@ final class WPInstagram {
      *
      * @var string
      */
-    public $version = '1.0.3';
+    public $version = '1.0.5';
 
     /**
      * The single instance of the class.
@@ -257,6 +257,8 @@ final class WPInstagram {
             return;
         }
 
+        $successful_post_ids = array();
+
         if ( ! empty( $json->data ) ) {
             foreach ( $json->data as $media ) {
                 $args = array(
@@ -286,6 +288,7 @@ final class WPInstagram {
                 update_post_meta( $post_id, 'ig_permalink', $media->permalink );
 
                 if ( has_post_thumbnail( $post_id ) ) {
+                    $successful_post_ids[] = $post_id;
                     continue;
                 }
 
@@ -322,7 +325,32 @@ final class WPInstagram {
                 wp_update_attachment_metadata( $attach_id, $attach_data );
 
                 set_post_thumbnail( $post_id, $attach_id );
+
+                $successful_post_ids[] = $post_id;
             }
+        }
+
+        $this->clean_old_posts( $successful_post_ids );
+    }
+
+    /**
+     * Clean old posts that are either deleted or unavailable.
+     * 
+     * @param array $successful_post_ids  An array of valid IDs that should be kept.
+     * 
+     * @return void
+     */
+    public function clean_old_posts( $successful_post_ids ) {
+        $query = new WP_Query(
+            array(
+                'post_type'      => 'instagram',
+                'post__not_in'   => $successful_post_ids,
+            )
+        );
+
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            wp_delete_post( get_the_ID() );
         }
     }
 
