@@ -24,7 +24,7 @@ You will need:
 
 ### Create a [Facebook App](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started)
 
-Go to [developers.facebook.com](https://developers.facebook.com/), click **My Apps**, and create a new app. Once you have created the app and are in the App Dashboard, navigate to **Settings** > **Basic**, scroll the bottom of page, and click **Add Platform**.
+Go to [developers.facebook.com](https://developers.facebook.com/), click **My Apps**, and click **Create App**. On the popup that asks "What do you need your app to do", choose **Build Connected Experiences**. Once you have created the app and are in the App Dashboard, navigate to **Settings** > **Basic**, scroll the bottom of page, and click **Add Platform**.
 
 Choose  **Website**, add your website’s URL, and save your changes. You can change the platform later if you wish, but for this tutorial, use  **Website**.
 
